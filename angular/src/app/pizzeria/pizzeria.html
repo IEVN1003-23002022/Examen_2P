@@ -1,0 +1,27 @@
+<div class="min-h-screen bg-slate-100 py-6 px-4">
+  <div class="max-w-5xl mx-auto space-y-4">
+
+    <!-- Encabezado básico cuadrado -->
+    <div class="flex items-center justify-between bg-white p-3 border border-gray-400">
+      <h1 class="text-xl font-bold text-gray-800 tracking-tight">
+        Pizzería - Registro de Pedidos
+      </h1>
+      <span class="text-xs bg-gray-200 text-gray-800 font-semibold px-2.5 py-1 border border-gray-300">
+        Segundo Parcial
+      </span>
+    </div>
+
+    <!-- Sección 1: Captura de datos -->
+    <app-captura></app-captura>
+
+    <!-- Sección 2: Detalle del pedido y Ventas del día -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 items-stretch">
+      <app-detalle></app-detalle>
+      <app-ventas-dia></app-ventas-dia>
+    </div>
+
+    <!-- Sección 3: Consulta de Ventas (Reportes con menús desplegables) -->
+    <app-reportes></app-reportes>
+
+  </div>
+</div>

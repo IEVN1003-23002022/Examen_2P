@@ -1,0 +1,52 @@
+<div class="p-4 bg-white border border-gray-400 h-full flex flex-col justify-between">
+
+  <div>
+    <h3 class="text-xs font-semibold text-gray-700 uppercase tracking-wide mb-2">Detalle de pizzas del pedido</h3>
+
+    <div class="border border-gray-400 overflow-hidden max-h-48 overflow-y-auto">
+      <table class="w-full text-xs text-left text-gray-700">
+        <thead class="bg-gray-100 border-b border-gray-400 text-gray-700 font-semibold uppercase text-[11px]">
+          <tr>
+            <th class="px-3 py-2 w-8 text-center border-r border-gray-300">Sel.</th>
+            <th class="px-3 py-2 border-r border-gray-300">Tamaño</th>
+            <th class="px-3 py-2 border-r border-gray-300">Ingredientes</th>
+            <th class="px-3 py-2 text-center border-r border-gray-300">Cant.</th>
+            <th class="px-3 py-2">SubTotal</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of pizzeriaService.pizzasTemp; let i = index"
+              (click)="indiceSeleccionado = i"
+              [class.bg-blue-50]="indiceSeleccionado === i"
+              class="border-b border-gray-200 cursor-pointer hover:bg-gray-50 transition">
+            <td class="px-3 py-2 text-center border-r border-gray-200">
+              <input type="radio" name="pizzaSel" [checked]="indiceSeleccionado === i">
+            </td>
+            <td class="px-3 py-2 font-medium border-r border-gray-200">{{ item.tamano }}</td>
+            <td class="px-3 py-2 text-gray-600 border-r border-gray-200">{{ item.ingredientes }}</td>
+            <td class="px-3 py-2 text-center border-r border-gray-200">{{ item.numPizzas }}</td>
+            <td class="px-3 py-2 font-bold text-gray-900">${{ item.subtotal }}</td>
+          </tr>
+          <tr *ngIf="pizzeriaService.pizzasTemp.length === 0">
+            <td colspan="5" class="px-3 py-6 text-center text-gray-400">
+              No hay pizzas en el detalle.
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="flex justify-end gap-3 mt-4 pt-3 border-t border-gray-300">
+    <button type="button" (click)="quitar()"
+      class="bg-gray-200 hover:bg-gray-300 text-gray-700 font-medium text-xs px-5 py-2 transition border border-gray-400">
+      Quitar Pizza
+    </button>
+
+    <button type="button" (click)="terminar()"
+      class="bg-emerald-600 hover:bg-emerald-700 text-white font-medium text-xs px-5 py-2 transition">
+      Terminar Pedido
+    </button>
+  </div>
+
+</div>
